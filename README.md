@@ -16,7 +16,14 @@ Python/
 ```bash
 python -m venv .venv
 .venv\Scripts\activate        # Windows
+.venv/bin/activate            # Linux / macOS
 pip install -r requirements.txt
+```
+
+Airflow va aparte porque necesita Linux (ver [Problemas conocidos](#problemas-conocidos)):
+
+```bash
+pip install -r requirements.txt -r requirements-airflow.txt
 ```
 
 ## `Python/pipelines-en-python`
@@ -73,6 +80,18 @@ El spider de Scrapy (`ExampleSpider`) solo es ejecutable dentro de un proyecto S
 
 `Customer Shopping Behavior Dataset` (Kaggle), 3 años con 3.900 / 3.600 / 3.700 registros
 y 19 columnas. Disponible en CSV y en XML dentro de `data/`.
+
+## Problemas conocidos
+
+- **`airflow_version.py` requiere Linux.** Airflow no soporta Windows de forma nativa
+  (falla con `cannot import name 'ObjectStoragePath' from 'airflow.sdk'`). En Windows usa
+  WSL2 o un contenedor Linux. El resto del repo sí funciona en Windows.
+- **`web_scrapping.py` abre Chrome real** y necesita el driver de selenium-manager.
+  El spider de Scrapy (`ExampleSpider`) solo corre dentro de un proyecto Scrapy.
+- **`populate_tests.py` necesita internet** la primera vez: descarga el dataset `tips`.
+- El DAG de Airflow pasa DataFrames por XCom, que es un anti-patrón de Airflow (el estado
+  del pipeline queda en la metadata DB). Para producción, escribir a disco o a un
+  warehouse en vez de usar XCom.
 
 ## Licencia
 

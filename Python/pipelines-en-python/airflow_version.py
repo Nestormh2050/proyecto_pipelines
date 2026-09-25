@@ -83,7 +83,11 @@ def step4(**context):
 
 def build_dag():
     from airflow import DAG
-    from airflow.operators.python import PythonOperator
+
+    try:
+        from airflow.providers.standard.operators.python import PythonOperator
+    except ImportError:
+        from airflow.operators.python import PythonOperator
 
     default_args = {
         "owner": "airflow",

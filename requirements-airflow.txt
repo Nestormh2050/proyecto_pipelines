@@ -1,0 +1,6 @@
+# Airflow requiere Linux (o WSL2 en Windows). Ver README.
+#
+#   pip install -r requirements.txt -r requirements-airflow.txt
+#
+# Airflow 3.x movio PythonOperator; airflow_version.py es compatible con 2.x y 3.x.
+apache-airflow>=2.8
