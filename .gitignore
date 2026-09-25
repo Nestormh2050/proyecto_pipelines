@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# artefactos de ejecucion del pipeline
+result.txt
+result_*.txt
+result_*.json
+
+# artefactos de los tutoriales de automatizacion
+directorio_pruebas/
+directorio_backup/
+temp_dir/
+
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store

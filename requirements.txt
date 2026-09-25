@@ -1,0 +1,12 @@
+# pipelines-en-python
+pandas>=2.0
+lxml>=4.9
+
+# automatizalo-todo-con-python
+seaborn>=0.13
+requests>=2.31
+selenium>=4.20
+scrapy>=2.11
+
+# orquestacion (solo airflow_version.py)
+apache-airflow>=2.8
